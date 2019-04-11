@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ApiSoapCarroService WSDL service -->
+
+  <service name="ApiSoapCarro" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://soap"/>
+      <parameter name="wsdlServiceElement" value="ApiSoapCarroService"/>
+      <parameter name="schemaQualified" value="http://soap"/>
+      <parameter name="wsdlServicePort" value="ApiSoapCarro"/>
+      <parameter name="className" value="soap.ApiSoapCarro"/>
+      <parameter name="wsdlPortType" value="ApiSoapCarro"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://soap" xmlns:retNS="http://soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="producteAfegit" qname="operNS:producteAfegit" returnQName="retNS:producteAfegitReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://soap" xmlns:tns="http://soap" qname="pns:producte" type="tns:Producte"/>
+      </operation>
+      <operation xmlns:operNS="http://soap" xmlns:retNS="http://soap" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="autentificar" qname="operNS:autentificar" returnQName="retNS:autentificarReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:login" type="tns:string"/>
+        <parameter xmlns:pns="http://soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pass" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://soap" xmlns:retNS="http://soap" xmlns:rtns="http://soap" name="obtenirProducte" qname="operNS:obtenirProducte" returnQName="retNS:obtenirProducteReturn" returnType="rtns:Producte" soapAction="">
+        <parameter xmlns:pns="http://soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:token" type="tns:string"/>
+        <parameter xmlns:pns="http://soap" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idProducte" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="producteAfegit autentificar obtenirProducte"/>
+
+      <typeMapping xmlns:ns="http://soap" qname="ns:Producte" type="java:soap.Producte" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

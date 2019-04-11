@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://soap" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soap" xmlns:intf="http://soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://soap" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="producteAfegit">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="producte" type="impl:Producte"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Producte">
+    <sequence>
+     <element name="dataFi" nillable="true" type="xsd:dateTime"/>
+     <element name="dataInici" nillable="true" type="xsd:dateTime"/>
+     <element name="descripcio" nillable="true" type="xsd:string"/>
+     <element name="disponibilitat" type="xsd:int"/>
+     <element name="fechaInici" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="idUsuari" type="xsd:int"/>
+     <element name="nom" nillable="true" type="xsd:string"/>
+     <element name="preu" type="xsd:float"/>
+    </sequence>
+   </complexType>
+   <element name="producteAfegitResponse">
+    <complexType>
+     <sequence>
+      <element name="producteAfegitReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="autentificar">
+    <complexType>
+     <sequence>
+      <element name="login" type="xsd:string"/>
+      <element name="pass" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="autentificarResponse">
+    <complexType>
+     <sequence>
+      <element name="autentificarReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenirProducte">
+    <complexType>
+     <sequence>
+      <element name="token" type="xsd:string"/>
+      <element name="idProducte" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenirProducteResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenirProducteReturn" type="impl:Producte"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="autentificarRequest">
+
+      <wsdl:part element="impl:autentificar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenirProducteResponse">
+
+      <wsdl:part element="impl:obtenirProducteResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="producteAfegitRequest">
+
+      <wsdl:part element="impl:producteAfegit" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="autentificarResponse">
+
+      <wsdl:part element="impl:autentificarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="producteAfegitResponse">
+
+      <wsdl:part element="impl:producteAfegitResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenirProducteRequest">
+
+      <wsdl:part element="impl:obtenirProducte" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ApiSoapCarro">
+
+      <wsdl:operation name="producteAfegit">
+
+         <wsdl:input message="impl:producteAfegitRequest" name="producteAfegitRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:producteAfegitResponse" name="producteAfegitResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="autentificar">
+
+         <wsdl:input message="impl:autentificarRequest" name="autentificarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:autentificarResponse" name="autentificarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenirProducte">
+
+         <wsdl:input message="impl:obtenirProducteRequest" name="obtenirProducteRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenirProducteResponse" name="obtenirProducteResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ApiSoapCarroSoapBinding" type="impl:ApiSoapCarro">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="producteAfegit">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="producteAfegitRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="producteAfegitResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="autentificar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="autentificarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="autentificarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenirProducte">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenirProducteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenirProducteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ApiSoapCarroService">
+
+      <wsdl:port binding="impl:ApiSoapCarroSoapBinding" name="ApiSoapCarro">
+
+         <wsdlsoap:address location="http://localhost:8080/SoapCarro/services/ApiSoapCarro"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
